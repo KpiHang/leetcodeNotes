@@ -13,11 +13,9 @@
   <script>
     window.$docsify = {
       name: '<h3>LeetCode Notes</h3>',
-      // git仓库右上图标
-      repo: '本文git仓库地址也支持gitee',
-      
-      // 主题色
-      themeColor: '#FE9A29',
+      repo: 'https://gitee.com/kphang/leetcode_notes',  // git仓库右上图标
+      auto2top: true, // 切换页面后是否自动跳转到页面顶部。
+      themeColor: '#FE9A29',  // 主题色
 
       // 侧边栏配置
       loadSidebar: true,
@@ -46,5 +44,10 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <!-- 字数统计 -->
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <!-- 语言高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cmake.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
 </body>
 </html>

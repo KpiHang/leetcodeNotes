@@ -3,13 +3,35 @@
 > 主要以算法思想为主，每道题可能有多种语言解法，记录刷题过程中的笔记；
 
 ## 写作说明
-master分支下的docs为git page主目录；
-日常任务均在dev分支下进行，dev提交后发起PR到master；
+
+1. Git page
+   - master分支下的docs为git page主目录；
+   - 日常任务均在dev分支下进行，dev提交后发起PR到master；
+2. 向优秀作者学习
+   - [算法通关手册（LeetCode） | 算法通关手册 (itcharge.cn)](https://algo.itcharge.cn/)
 
 ## TODO List
-1. 第一轮Python，先按照labuladong的算法小抄顺序来刷；
-    - 阅读《算法导论》并发进行；
-    - labuladong的算法小抄上所有题刷完后，还剩下题自己解决；
-2. 深入学习第二种语言，并使用该语言再刷一遍LeetCode题；
-    - 目前最大可能为Golang；
 
+- [ ] 第一轮Python，先按照labuladong的算法小抄顺序来刷；
+  - 阅读《算法导论》并发进行；
+  - labuladong的算法小抄上所有题刷完后，还剩下题自己解决；
+- [ ] 第一轮刷题到一定阶段后可以参考[算法通关手册（LeetCode） | 算法通关手册 (itcharge.cn)](https://algo.itcharge.cn/)对此page进行优化；
+  - 目录折叠功能：https://www.cxywy.com/?p=7
+- [ ] 深入学习第二种语言，并使用该语言再刷一遍LeetCode题；（当前最大可能性是Golang）。
+
+
+
+## 题解目录
+
+> 题目链接到git page的对应url；
+> eg：`https://kphang.gitee.io/leetcode_notes/#/./notes/21-合并两个有序链表`
+
+| 题目                                                         | Solution         | 难度 |
+| ------------------------------------------------------------ | ---------------- | ---- |
+| [21. 合并两个有序链表](https://kphang.gitee.io/leetcode_notes/#/./notes/21-合并两个有序链表) | Python, Go(test) | 简单 |
+
+
+
+## 版权说明
+
+- 本书题解中的所有题目版权均归 [LeetCode](https://leetcode.com/) 和 [力扣中国](https://leetcode-cn.com/) 所有。
