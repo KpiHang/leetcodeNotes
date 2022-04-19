@@ -4,9 +4,12 @@
 
 ## 写作说明
 
-1. Git page
-   - master分支下的docs为git page主目录；
+1. GitHub Page
+   - 由dev分支下的docs目录为page的根目录；
    - 日常任务均在dev分支下进行，dev提交后发起PR到master；
+   - 注意提交到dev后，**检测页面正常，记得发起PR**；
+   > 如果是master提供page服务，则每次需要pr后才可以检测page效果；
+
 2. 向优秀作者学习
    - [算法通关手册（LeetCode） | 算法通关手册 (itcharge.cn)](https://algo.itcharge.cn/)
 
@@ -21,7 +24,7 @@
 
 ## 解题目录
 <div style="position: relative; padding: 20% 5%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://kphang.gitee.io/leetcode_notes/#/./%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95" frameborder="1" scrolling="yes"></iframe>
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://kpihang.github.io/leetcodeNotes/#/./%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95" frameborder="1" scrolling="yes"></iframe>
 </div>
 
 
