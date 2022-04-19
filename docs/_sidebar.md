@@ -1,12 +1,13 @@
 <!-- docs/_sidebar.md -->
 ---
 - [**我的博客**](https://www.cnblogs.com/kphang/)
-[**Gitee or GitHub**](https://gitee.com/kphang)
+[**GitHub**](https://github.com/KpiHang)
 - [**微信公众号**](xxx)
 
 ---
 - [**解题目录**](?id=题解目录)
-  - [21. 合并两个有序链表](notes/21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8.md)
+  - [0001. 两数之和](notes/1-两数之和.md)   
+  - [0021. 合并两个有序链表](notes/21-合并两个有序链表.md)
 
 
 
