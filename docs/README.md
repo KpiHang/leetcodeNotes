@@ -19,17 +19,10 @@
   - 目录折叠功能：https://www.cxywy.com/?p=7
 - [ ] 深入学习第二种语言，并使用该语言再刷一遍LeetCode题；（当前最大可能性是Golang）。
 
-
-
-## 题解目录
-
-> 题目链接根据路径，eg：`notes/21-合并两个有序链表.md`
-
-| 题目                                                 | Solution | 难度 |
-| ---------------------------------------------------- | -------- | ---- |
-| [0001. 两数之和](notes/1-两数之和.md)                   | Python   | 简单 |
-| [0021. 合并两个有序链表](notes/21-合并两个有序链表.md) | Python   | 简单 |
-
+## 解题目录
+<div style="position: relative; padding: 20% 5%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://kphang.gitee.io/leetcode_notes/#/./%E8%A7%A3%E9%A2%98%E7%9B%AE%E5%BD%95" frameborder="1" scrolling="yes"></iframe>
+</div>
 
 
 ## 版权说明
