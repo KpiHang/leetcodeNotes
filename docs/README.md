@@ -4,13 +4,7 @@
 
 ## 写作说明
 
-1. GitHub Page
-   - 由dev分支下的docs目录为page的根目录；
-   - 日常任务均在dev分支下进行，dev提交后发起PR到master；
-   - 注意提交到dev后，**检测页面正常，记得发起PR**；
-   > 如果是master提供page服务，则每次需要pr后才可以检测page效果；
-
-2. 向优秀作者学习
+1. 向优秀作者学习
    - [算法通关手册（LeetCode） | 算法通关手册 (itcharge.cn)](https://algo.itcharge.cn/)
 
 ## TODO List
