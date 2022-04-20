@@ -4,7 +4,8 @@
 
 ## 写作说明
 
-1. 向优秀作者学习
+1. 小更新直接在master上做，功能更新则最好在新分支上做；（分支合并之后就删，功能更新完成） 
+2. 向优秀作者学习
    - [算法通关手册（LeetCode） | 算法通关手册 (itcharge.cn)](https://algo.itcharge.cn/)
 
 ## TODO List
