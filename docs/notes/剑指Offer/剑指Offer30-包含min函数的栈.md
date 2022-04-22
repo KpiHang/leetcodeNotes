@@ -1,0 +1,50 @@
+# [剑指 Offer 30. 包含min函数的栈](https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/)
+
+与LeetCode [155. 最小栈 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/min-stack/) 相同；
+
+详细解析：[《剑指Offer》30-包含min函数的栈 - 分享技术成长历程～ - 博客园 (cnblogs.com)](https://www.cnblogs.com/kphang/p/15836969.html)
+
+> 核心：栈的每一层都有其对应的min；所以需要一个一维数组从而达到O(1)；
+
+## Python数组记录每层min
+
+```python
+class MinStack:
+
+    def __init__(self):
+        self.stack = list()
+        self.minList = {}
+        self.topId = -1 # 栈顶指针, 始终指向栈顶；
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        self.topId += 1
+        if len(self.stack)-1 == 0:
+            self.minList[self.topId] = val
+        else:
+            if val < self.minList.get(self.topId-1):
+                self.minList[self.topId] = val
+            else: self.minList[self.topId] = self.minList.get(self.topId-1)
+
+
+    def pop(self) -> None:
+        self.stack.pop()
+        # dict的pop方法不是删除最后一个，而是删除特定的，popitem才是删除最后一个键值对；
+        self.minList.pop(self.topId)
+        self.topId -= 1
+
+    def top(self) -> int:
+        return self.stack[self.topId]
+
+    def getMin(self) -> int:
+        return self.minList[self.topId]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+```
+
