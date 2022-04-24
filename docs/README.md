@@ -5,8 +5,19 @@
 ## 写作说明
 
 1. 小更新直接在master上做，功能更新则最好在新分支上做；（分支合并之后就删，功能更新完成） 
+
 2. [剑指Offer页面setup及做题的预处理工作自动化 · Issue #8 · KpiHang/leetcodeNotes (github.com)](https://github.com/KpiHang/leetcodeNotes/issues/8)
    - 使用方式，如：`python offerauto.py https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/`
+   
+   - 如果剑指Offer题目与LeetCode的题目有关联可以使用：
+   
+     ```shell
+     # 138指：剑指offer题目对应的LeetCode题号！
+     python offerauto.py https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/ 138
+     ```
+   
+     
+   
 3. 向优秀作者学习
    - [算法通关手册（LeetCode） | 算法通关手册 (itcharge.cn)](https://algo.itcharge.cn/)
 

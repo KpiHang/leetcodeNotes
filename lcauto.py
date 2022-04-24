@@ -1,14 +1,10 @@
 import json
 import os,re,sys
 import requests
-from lcauto import LeetCodeAuto
 
-# 不足：正则，文件操作；
-
-# 剑指Offer预处理自动化类；
-class JZOfferAuto:
+class LeetCodeAuto():
     """
-    JZOffer Auto: 剑指(JZ)Offer预处理自动化;
+    普通力扣题目自动化预处理；
     """
     def __init__(self, qURL) -> None:
         self.qURL = qURL
@@ -56,10 +52,10 @@ class JZOfferAuto:
         # 题号整型提取； 剑指 Offer 30
         self.qNumber = int(questionFrontendId.split(" ")[-1])
 
-        # print(self.qTitle) # 剑指 Offer 30. 包含min函数的栈
-        # print(self.qMD) # 剑指Offer30-包含min函数的栈.md
-        # print(self.difficulty) # 简单
-        # print(self.qNumber) # 30
+        # print(self.qTitle) # 138. 复制带随机指针的链表
+        # print(self.qMD) # 138-复制带随机指针的链表.md
+        # print(self.difficulty) # 中等
+        # print(self.qNumber) # 138
 
 
     def initMD(self):
@@ -67,7 +63,7 @@ class JZOfferAuto:
         初试化，对应的markdown文件；
         """
         # 判断文件是否已经存在；
-        filename = "./docs/notes/剑指Offer/" + self.qMD
+        filename = "./docs/notes/" + self.qMD
         if os.path.isfile(filename):
             print(self.qMD + ": 该文件已经存在")
             exit(0)
@@ -75,7 +71,7 @@ class JZOfferAuto:
         with open(filename, 'w') as f:
             str = "# [{}]({})".format(self.qTitle, self.qURL)
             f.write(str)
-            print("--- 已创建完成并写入一级标题 docs/notes/剑指Offer/{}".format(self.qMD))
+            print("--- 已创建完成并写入一级标题 docs/notes/{}".format(self.qMD))
     
     def modifySidebar(self):
         """
@@ -88,10 +84,15 @@ class JZOfferAuto:
         # 待插入行的下标
         self.index = -1
         for index,sidebarLine in enumerate(sidebarLines):
+            if "剑指" in sidebarLine: continue # 跳过剑指offer的表格；
+
             # 匹配到对应行了，进行题号大小比较，小数在前，大数在后；
-            if sidebarLine.startswith("  - [剑指 Offer "):
-                # 提取文件当中记录的题号；
-                curNumber = int(re.findall(r'\d+', sidebarLine)[0])
+            # "  - [0001. 两数之和](notes/1-两数之和.md)   " 
+            pattern = re.compile(r'  - \[(\d{4}). ')
+            
+            if len(pattern.findall(sidebarLine)) != 0:
+                # 提取文件当中记录的题号； "  - [0001. 两数之和](notes/1-两数之和.md)   "
+                curNumber = int(pattern.findall(sidebarLine)[0])
                 if self.qNumber < curNumber: 
                     self.index = index
                     break
@@ -100,8 +101,8 @@ class JZOfferAuto:
                     exit()
                 else: # 此题号，比当前号大；
                     # 根据下一行情况来确定位置；
-                    if sidebarLines[index+1].startswith("  - [剑指 Offer "):
-                        nextNumber = int(re.findall(r'\d+', sidebarLines[index+1])[0])
+                    if "  - [" in sidebarLines[index+1]:
+                        nextNumber = int(pattern.findall(sidebarLines[index+1])[0])
                         if curNumber < self.qNumber < nextNumber:
                             self.index = index+1
                             break
@@ -109,8 +110,11 @@ class JZOfferAuto:
                     else: 
                         self.index = index+1
                         break
-        #   - [剑指 Offer 09. 用两个栈实现队列](notes/剑指Offer/剑指Offer09-用两个栈实现队列.md)
-        insertData = "  - [{}](notes/剑指Offer/{})\n".format(self.qTitle, self.qMD)
+        # "  - [0001. 两数之和](notes/1-两数之和.md)   " 
+        # 先将题号变为 四位数 
+        self.qTitle_CN = self.qTitle.split(' ')[1] # 两数之和
+        self.qSeq = '{:0>4}'.format(self.qNumber) # 将123 变为 0123的效果！！！
+        insertData = "  - [{}. {}](notes/{})\n".format(self.qSeq,self.qTitle_CN, self.qMD) 
         sidebarLines.insert(self.index, insertData)
 
         # 修改好的，写入文件；
@@ -129,10 +133,14 @@ class JZOfferAuto:
         # 待插入行的下标
         self.index = -1
         for index,jtLine in enumerate(jtLines):
+
+            pattern = re.compile(r'\| \[(\d{4}). ')
+
             # 匹配到对应行了，进行题号大小比较，小数在前，大数在后；
-            if jtLine.startswith("| [剑指 Offer "):
+            if len(pattern.findall(jtLine)) != 0:
+
                 # 提取文件当中记录的题号；
-                curNumber = int(re.findall(r'\d+', jtLine)[0])
+                curNumber = int(pattern.findall(jtLine)[0])
                 if self.qNumber < curNumber: 
                     self.index = index
                     break
@@ -141,8 +149,8 @@ class JZOfferAuto:
                     exit()
                 else: # 此题号，比当前号大；
                     # 根据下一行情况来确定位置；
-                    if jtLines[index+1].startswith("| [剑指 Offer "):
-                        nextNumber = int(re.findall(r'\d+', jtLines[index+1])[0])
+                    if "| [" in jtLines[index+1]:
+                        nextNumber = int(pattern.findall(jtLines[index+1])[0])
                         if curNumber < self.qNumber < nextNumber:
                             self.index = index+1
                             break
@@ -150,8 +158,11 @@ class JZOfferAuto:
                     else: 
                         self.index = index+1
                         break
-        #| [剑指 Offer 09. 用两个栈实现队列](notes/剑指Offer/剑指Offer09-用两个栈实现队列.md)| Python   | 简单 |
-        insertData = "| [{}](notes/剑指Offer/{})| Python   | {} |\n".format(self.qTitle, self.qMD, self.difficulty)
+        #| [0232. 用栈实现队列](notes/232-用栈实现队列)           | Python   | 简单 |
+        # 先将题号变为 四位数 
+        self.qTitle_CN = self.qTitle.split(' ')[1] # 两数之和
+        self.qSeq = '{:0>4}'.format(self.qNumber) # 将123 变为 0123的效果！！！
+        insertData = "| [{}. {}](notes/{})| Python   | {} |\n".format(self.qSeq, self.qTitle_CN ,self.qMD, self.difficulty)
         jtLines.insert(self.index, insertData)
 
         # 修改好的，写入文件；
@@ -159,43 +170,13 @@ class JZOfferAuto:
             fwrite.writelines(jtLines)
             print("--- 写入解题目录.md已完成；")
 
-if __name__ == "__main__":
-    # 使用方式：
-    # python offerauto.py https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/
-    qUrl = sys.argv[1]
-    offerauto = JZOfferAuto(qUrl)
-    offerauto.getQInfo()
-    offerauto.initMD() 
-    offerauto.modifySidebar()
-    offerauto.modify解题目录()
+# if __name__ == "__main__":
+#     # 使用方式：
+#     # python lcauto.py https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/
 
-    # 如果剑指Offer 和LeetCode题库有关联，则第二个参数为关联题号！
-    # python offerauto.py https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/ 138
-    
-    if sys.argv[2]:
-        print("正在处理关联的LeetCode题目：")
-        header = {
-        "accept-language": "zh-CN",
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.44",
-        }
-
-        url = "https://leetcode-cn.com/graphql/"
-
-        query = "query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {\n  problemsetQuestionList(\n    categorySlug: $categorySlug\n    limit: $limit\n    skip: $skip\n    filters: $filters\n  ) {\n    hasMore\n    total\n    questions {\n    difficulty\n   frontendQuestionId\n         solutionNum\n      title\n      titleCn\n      titleSlug \n}\n}\n} "
-        variables = {
-        "categorySlug": "",
-        "skip": 0,
-        "limit": 1,
-        "filters": {"searchKeywords": "{}".format(sys.argv[2])}
-        }
-        response = requests.post(url=url, json={'query': query, 'variables': variables}, headers=header)
-        info = response.json()
-        titleSlug = info['data']['problemsetQuestionList']['questions'][0]['titleSlug']
-        # 题目URL：
-        leetcodeUrl = "https://leetcode-cn.com/problems/{}/".format(titleSlug)
-
-        offerauto = LeetCodeAuto(leetcodeUrl)
-        offerauto.getQInfo()
-        offerauto.initMD() 
-        offerauto.modifySidebar()
-        offerauto.modify解题目录()
+#     qUrl = sys.argv[1]
+#     offerauto = LeetCodeAuto(qUrl)
+#     offerauto.getQInfo()
+#     offerauto.initMD() 
+#     offerauto.modifySidebar()
+#     offerauto.modify解题目录()
