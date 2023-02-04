@@ -1,13 +1,8 @@
 # KpHang's Leetcode Notes
 
-> 主要以算法思想为主，每道题可能有多种语言解法，记录刷题过程中的笔记；
+> 此仓库暂停更新，预计与https://github.com/KpiHang/LeetcodeRecordes 进行合并！
 
-
----
-
-> **力扣官方做题时就有笔记本功能，为了加快做题效率，咱不更新此项目，使用官方做题本记录；**
-
----
+[![pSyQVtU.png](https://s1.ax1x.com/2023/02/04/pSyQVtU.png)](https://imgse.com/i/pSyQVtU)
 
 **详情查看`./docs/README.md`**
 
