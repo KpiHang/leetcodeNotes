@@ -1,4 +1,4 @@
-# KpHang's Leetcode Notes
+# [KpHang's Leetcode Notes](https://kpihang.github.io/leetcodeNotes/)
 
 > 此仓库暂停更新，预计与https://github.com/KpiHang/LeetcodeRecordes 进行合并！
 
